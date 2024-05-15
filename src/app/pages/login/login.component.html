@@ -1,0 +1,45 @@
+<!-- //pages/login/login.component.html -->
+<!-- login.component.html -->
+
+<div class="container background-degrade">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <img src="./assets/img/logovet.png" alt="Logo de la Universidad Javeriana" class="logo">
+          </div>
+          <div class="card-body">
+            <h2 class="card-title text-center font-weight-bold mb-4">Vet-Clinic</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="on">
+              <!-- Campo de Usuario -->
+              <div class="form-group">
+                <label for="username" class="label-tex">Usuario:</label>
+                <input type="text" formControlName="username" class="form-control" id="username" aria-describedby="usernameError" placeholder="Ej: usuario123" autocomplete="username">
+                <!-- Mensajes de error para el campo de usuario -->
+                <div *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)" class="text-danger">
+                  <div *ngIf="loginForm.get('username')?.errors?.['required']">Usuario es requerido</div>
+                </div>
+              </div>
+              <!-- Campo de Contraseña -->
+              <div class="form-group">
+                <label for="password" class="label-tex">Contraseña:</label>
+                <input type="password" formControlName="password" class="form-control" id="password" aria-describedby="passwordError" placeholder="Introduce tu contraseña" autocomplete="current-password">
+                <!-- Mensajes de error para el campo de contraseña -->
+                <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="text-danger">
+                  <div *ngIf="loginForm.get('password')?.errors?.['required']">Contraseña es requerida</div>
+                </div>
+              </div>
+              <!-- Botón de Inicio de Sesión -->
+              <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                <!-- Mensaje de error del servidor -->
+                <div *ngIf="error" class="text-danger mt-2">{{ error }}</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

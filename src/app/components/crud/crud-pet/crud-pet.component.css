@@ -1,0 +1,104 @@
+.contenido {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif; /* Cambiar la fuente a Arial */
+  }
+  
+  .search-section, .pet-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Estilos para los inputs */
+  input[type="text"],
+  input[type="number"]
+   {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
+  }
+  
+  /* Estilos para los botones */
+  button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+    color: white;
+    font-size: 16px;
+    font-family: Arial, sans-serif; /* Asegurar que los botones también usen Arial */
+  }
+  
+  /* Colores específicos para cada acción */
+  .crud-buttons button {
+    background-color: #4CAF50;
+  }
+  
+  .search-section button {
+    background-color: #008CBA; /* Verde para el botón Buscar */
+  }
+  
+  .form-buttons button:first-child {
+    background-color:#4CAF50; /* Rojo para el botón Guardar */
+  }
+  
+  .form-buttons button:last-child {
+    background-color: #f44336;  /* Gris para el botón Cancelar */
+    color: black;
+  }
+  
+  #tablaMascotas button:first-child {
+    background-color: #ff9800; /* Naranja para el botón Editar */
+  }
+  
+  #tablaMascotas button:last-child {
+    background-color: #f44336; /* Rojo para el botón Eliminar */
+  }
+  
+  /* Estilos mejorados para la tabla de mascotas */
+  #tablaMascotas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif; /* Asegurando que la fuente sea Arial */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra ligera para dar profundidad */
+  }
+  
+  #tablaMascotas, #tablaMascotas th, #tablaMascotas td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 12px; /* Aumentando el padding para más espacio */
+  }
+  
+  #tablaMascotas th {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px; /* Aumentando el tamaño de fuente para los encabezados */
+  }
+  
+  #tablaMascotas td {
+    font-size: 18px; /* Ajustando el tamaño de la fuente para el contenido */
+  }
+  
+  #tablaMascotas tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  #tablaMascotas tr:hover {
+    background-color: #ddd;
+    cursor: pointer; /* Cambia el cursor para indicar que la fila es interactiva */
+  }
+  
+  /* Mejorando la visibilidad del hover */
+  #tablaMascotas tr:hover td {
+    color: #007bff; /* Cambia el color del texto al pasar el mouse para mejor contraste */
+  }
+  

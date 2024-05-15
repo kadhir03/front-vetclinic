@@ -1,0 +1,60 @@
+<div class="contenido">
+    <h2>Gestión de Detalles de Historial</h2>
+  
+    <div class="search-section">
+      <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterHistoryDetails()" placeholder="Buscar detalles de historial...">
+    </div>
+  
+    <div class="crud-buttons">
+      <button (click)="showCreateHistoryDetailForm()">Crear Detalle de Historial</button>
+    </div>
+  
+    <div *ngIf="isCreateHistoryDetailFormVisible" class="history-detail-form">
+      <input type="date" [(ngModel)]="selectedHistoryDetail.date" placeholder="Fecha">
+      <input type="text" [(ngModel)]="selectedHistoryDetail.time" placeholder="Hora">
+      <input type="number" [(ngModel)]="selectedHistoryDetail.temperature" placeholder="Temperatura">
+      <input type="number" [(ngModel)]="selectedHistoryDetail.weight" placeholder="Peso">
+      <input type="number" [(ngModel)]="selectedHistoryDetail.heartRate" placeholder="Frecuencia Cardíaca">
+      <input type="number" [(ngModel)]="selectedHistoryDetail.userId" placeholder="ID del Usuario">
+      <input type="number" [(ngModel)]="selectedHistoryDetail.clinicHistoryId" placeholder="ID del Historial de Clínica">
+  
+      <!-- Añade más campos según necesites -->
+  
+      <div class="form-buttons">
+        <button (click)="selectedHistoryDetail.id ? updateHistoryDetail() : createHistoryDetail()">Guardar</button>
+        <button (click)="hideCreateHistoryDetailForm()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
+  <table id="tablaDetallesHistorial">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th style="text-align: center;">Fecha</th>
+        <th style="text-align: center;">Hora</th>
+        <th style="text-align: center;">Temperatura</th>
+        <th style="text-align: center;">Peso</th>
+        <th style="text-align: center;">Frecuencia Cardíaca</th>
+        <th style="text-align: center;">ID Usuario</th>
+        <th style="text-align: center;">ID Historial de Clínica</th>
+        <th style="text-align: center;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of historyDetails">
+        <td>{{ detail.id }}</td>
+        <td>{{ detail.date }}</td>
+        <td>{{ detail.time }}</td>
+        <td>{{ detail.temperature }}</td>
+        <td>{{ detail.weight }}</td>
+        <td>{{ detail.heartRate }}</td>
+        <td>{{ detail.userId }}</td>
+        <td>{{ detail.clinicHistoryId }}</td>
+        <td>
+          <button (click)="selectHistoryDetail(detail)">Editar</button>
+          <button (click)="deleteHistoryDetail(detail.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

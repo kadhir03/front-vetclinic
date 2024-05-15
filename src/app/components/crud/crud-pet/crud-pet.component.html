@@ -1,0 +1,53 @@
+<div class="contenido">
+    <h2>Gestión de Mascotas</h2>
+  
+    <div class="search-section">
+      <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterPets()" placeholder="Buscar mascotas...">
+    </div>
+  
+    <div class="crud-buttons">
+      <button (click)="showCreatePetForm()">Crear Mascota</button>
+    </div>
+  
+    <div *ngIf="isCreatePetFormVisible" class="pet-form">
+      <input type="text" [(ngModel)]="selectedPet.name" placeholder="Nombre de la mascota">
+      <input type="text" [(ngModel)]="selectedPet.breed" placeholder="Raza de la mascota">
+      <input type="text" [(ngModel)]="selectedPet.gender" placeholder="Género de la mascota">
+      <input type="number" [(ngModel)]="selectedPet.clientId" placeholder="ID del cliente">
+  
+      <!-- Añade más campos según necesites -->
+  
+      <div class="form-buttons">
+        <button (click)="selectedPet.id ? updatePet() : createPet()">Guardar</button>
+        <button (click)="hideCreatePetForm()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
+  <table id="tablaMascotas">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th style="text-align: center;">Nombre</th>
+        <th style="text-align: center;">Raza</th>
+        <th style="text-align: center;">Género</th>
+        <th style="text-align: center;">ID Cliente</th>
+        <th style="text-align: center;">Estado</th>
+        <th style="text-align: center;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pet of pets">
+        <td>{{ pet.id }}</td>
+        <td>{{ pet.name }}</td>
+        <td>{{ pet.breed }}</td>
+        <td>{{ pet.gender }}</td>
+        <td>{{ pet.clientId }}</td>
+        <td>
+          <button (click)="selectPet(pet)">Editar</button>
+          <button (click)="deletePet(pet.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

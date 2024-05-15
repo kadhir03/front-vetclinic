@@ -1,0 +1,58 @@
+<div class="contenido">
+    <h2>Gestión de Usuarios</h2>
+  
+    <div class="search-section">
+      <!-- Input de búsqueda -->
+     <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterUsers()" placeholder="Search users...">
+    </div>
+  
+    <div class="crud-buttons">
+      <button (click)="showCreateUserForm()">Crear Usuario</button>
+    </div>
+  
+    <!-- Formulario de creación/edición de usuario -->
+    <div *ngIf="isCreateUserFormVisible" class="user-form">
+      <input type="text" [(ngModel)]="selectedUser.username" placeholder="Name">
+      <input type="email" [(ngModel)]="selectedUser.email" placeholder="Email">
+      <input type="password" [(ngModel)]="selectedUser.password" placeholder="Contraseña">
+      <input type="integer" [(ngModel)]="selectedUser.rolId" placeholder="Rol">
+      <input type="integer" [(ngModel)]="selectedUser.cellPhone" placeholder="Celular">
+      <div class="form-buttons">
+        <button (click)="selectedUser.id ? updateUser() : createUser()">Guardar</button>
+        <button (click)="hideCreateUserForm()">Cancelar</button>
+      </div>
+    </div>
+    
+  </div> <!-- Cierre del div "contenido" -->
+  
+  <table id="tablaUsuarios">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th style="text-align: center;">Nombre</th>
+        <th style="text-align: center;">Email</th>
+        <th style="text-align: center;">Celular</th>
+        <th style="text-align: center;">Rol</th>
+        <th style="text-align: center;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Iterar sobre el array de usuarios y mostrarlos en la tabla -->
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.cellPhone }}</td>
+        <td>{{ user.rolId }}</td>
+        <td>
+          <!-- Botones para editar y eliminar usuario específico -->
+          <button (click)="selectUser(user)">Editar</button>
+          <button (click)="deleteUser(user.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  
+  

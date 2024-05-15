@@ -1,0 +1,48 @@
+<div class="contenido">
+    <h2>Gestión de Historiales de Clínica</h2>
+  
+    <div class="search-section">
+      <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterClinicHistories()" placeholder="Buscar historiales de clínica...">
+    </div>
+  
+    <div class="crud-buttons">
+      <button (click)="showCreateClinicHistoryForm()">Crear Historial de Clínica</button>
+    </div>
+  
+    <div *ngIf="isCreateClinicHistoryFormVisible" class="clinic-history-form">
+      <input type="date" [(ngModel)]="selectedClinicHistory.date" placeholder="Fecha">
+      <input type="date" [(ngModel)]="selectedClinicHistory.time" placeholder="Hora">
+      <input type="number" [(ngModel)]="selectedClinicHistory.petId" placeholder="ID de la mascota">
+  
+      <!-- Añade más campos según necesites -->
+  
+      <div class="form-buttons">
+        <button (click)="selectedClinicHistory.id ? updateClinicHistory() : createClinicHistory()">Guardar</button>
+        <button (click)="hideCreateClinicHistoryForm()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
+  <table id="tablaHistorialesClinicos">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th style="text-align: center;">Fecha</th>
+        <th style="text-align: center;">Hora</th>
+        <th style="text-align: center;">ID Mascota</th>
+        <th style="text-align: center;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let history of clinicHistories">
+        <td>{{ history.id }}</td>
+        <td>{{ history.date }}</td>
+        <td>{{ history.time }}</td>
+        <td>{{ history.petId }}</td>
+        <td>
+          <button (click)="selectClinicHistory(history)">Editar</button>
+          <button (click)="deleteClinicHistory(history.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,55 @@
+<div class="contenido">
+    <h2>Gestión de Clientes</h2>
+  
+    <div class="search-section">
+      <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterClients()" placeholder="Buscar clientes...">
+    </div>
+  
+    <div class="crud-buttons">
+      <button (click)="showCreateClientForm()">Crear Cliente</button>
+    </div>
+  
+    <div *ngIf="isCreateClientFormVisible" class="client-form">
+      <input type="text" [(ngModel)]="selectedClient.names" placeholder="Nombres del cliente">
+      <input type="text" [(ngModel)]="selectedClient.document" placeholder="Documento del cliente">
+      <input type="text" [(ngModel)]="selectedClient.phone" placeholder="Teléfono del cliente">
+      <input type="text" [(ngModel)]="selectedClient.address" placeholder="Dirección del cliente">
+      <input type="number" [(ngModel)]="selectedClient.age" placeholder="Edad del cliente">
+  
+      <!-- Añade más campos según necesites -->
+  
+      <div class="form-buttons">
+        <button (click)="selectedClient.id ? updateClient() : createClient()">Guardar</button>
+        <button (click)="hideCreateClientForm()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
+  <table id="tablaClientes">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th style="text-align: center;">Nombres</th>
+        <th style="text-align: center;">Documento</th>
+        <th style="text-align: center;">Teléfono</th>
+        <th style="text-align: center;">Dirección</th>
+        <th style="text-align: center;">Edad</th>
+        <th style="text-align: center;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>{{ client.id }}</td>
+        <td>{{ client.names }}</td>
+        <td>{{ client.document }}</td>
+        <td>{{ client.phone }}</td>
+        <td>{{ client.address }}</td>
+        <td>{{ client.age }}</td>
+        <td>
+          <button (click)="selectClient(client)">Editar</button>
+          <button (click)="deleteClient(client.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
