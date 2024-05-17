@@ -2,10 +2,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DasComponent } from './pages/dashboard/das.component';
-import { LoginComponent } from './pages/login/login.component';
+import { DasComponent } from './modules/pages/dashboard/das.component';
+import { LoginComponent } from './modules/pages/login/login.component';
 
-import { RoleGuard } from './auth/role.guard'; 
+import { RoleGuard } from './modules/auth/role.guard'; 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },

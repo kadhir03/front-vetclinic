@@ -1,0 +1,43 @@
+
+<body>
+
+  <div class="sidebar" [ngClass]="{'active': !sidebarVisible}">
+    <div class="dashboard-title">Dashboard Admin</div>
+   
+    <div class="sidebar-links">
+      <button (click)="mostrarComponente('roles')">Roles</button>
+      <button (click)="mostrarComponente('usuarios')">Usuarios</button>
+      <button (click)="mostrarComponente('mascotas')">mascotas</button>
+      <button (click)="mostrarComponente('clientes')">clientes</button>
+      <button (click)="mostrarComponente('historias-clinicas')">historias-clinicas</button>
+      <button (click)="mostrarComponente('historias-detalladas')">historias-detalladas</button>
+    </div>
+
+    <button class="btn-salir" (click)="salir()">Salir</button>
+
+  </div>
+
+  <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+
+  <div class="contenido">
+    <ng-container *ngIf="componenteActual">
+      <ng-container *ngComponentOutlet="componenteActual"></ng-container>
+    </ng-container>
+  </div>
+
+  <!-- Inicio del pie de página -->
+  <footer class="pie-pagina">
+    <p>Bienvenidos la clinica veterinaria</p>
+    <p>vet-clinic</p>
+  </footer>
+  <!-- Fin del pie de página -->
+
+
+</body>
+
+
+
+  
+
+
+  
